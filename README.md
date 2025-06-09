@@ -1,1 +1,1 @@
-# wordpress-openprofile
+# Official OpenProfile.AI WordPress Fact Pod Plugin
