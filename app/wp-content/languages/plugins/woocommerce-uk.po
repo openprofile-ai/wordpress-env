@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - WooCommerce - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-06-22 10:48:22+0000\n"
+"PO-Revision-Date: 2025-06-23 10:28:19+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10,6 +10,10 @@ msgstr ""
 "X-Generator: GlotPress/4.0.1\n"
 "Language: uk_UA\n"
 "Project-Id-Version: Plugins - WooCommerce - Stable (latest release)\n"
+
+#: includes/admin/helper/class-wc-helper.php:110
+msgid "We’re having trouble connecting to WooCommerce.com"
+msgstr "Виникла проблема з підключенням до WooCommerce.com"
 
 #: assets/client/blocks/reviews-by-product/block.json
 msgctxt "block description"
@@ -96,6 +100,11 @@ msgctxt "block title"
 msgid "Attribute"
 msgstr "Атрибут"
 
+#: assets/client/blocks/product-description/block.json
+msgctxt "block title"
+msgid "Product Description"
+msgstr "Опис товару"
+
 #: assets/client/blocks/all-reviews/block.json
 msgctxt "block title"
 msgid "All Reviews"
@@ -116,6 +125,23 @@ msgstr "Вміст відгуку"
 #: src/Internal/Features/FeaturesController.php:428
 msgid "Enable the block-based email editor for transactional emails. <a href=\"https://github.com/woocommerce/woocommerce/discussions/52897#discussioncomment-11630256\" target=\"_blank\">Learn more</a>"
 msgstr "Увімкнути блоковий редактор електронних листів для повідомлень про транзакції. <a href=\"https://github.com/woocommerce/woocommerce/discussions/52897#discussioncomment-11630256\" target=\"_blank\">Дізнатися більше</a>"
+
+#: src/Internal/EmailEditor/PersonalizationTags/StoreTagsProvider.php:50
+msgid "Store Name"
+msgstr "Назва магазину"
+
+#: src/Internal/EmailEditor/PersonalizationTags/StoreTagsProvider.php:39
+msgid "Store URL"
+msgstr "URL магазину"
+
+#: src/Internal/EmailEditor/PersonalizationTags/StoreTagsProvider.php:27
+#: src/Internal/EmailEditor/PersonalizationTags/StoreTagsProvider.php:41
+#: src/Internal/EmailEditor/PersonalizationTags/StoreTagsProvider.php:52
+#: src/Internal/EmailEditor/PersonalizationTags/StoreTagsProvider.php:67
+#: src/Internal/EmailEditor/PersonalizationTags/StoreTagsProvider.php:78
+#: src/Internal/EmailEditor/PersonalizationTags/StoreTagsProvider.php:89
+msgid "Store"
+msgstr "Магазин"
 
 #. translators: %s: human-readable time difference.
 #: src/Blocks/BlockTypes/Reviews/ProductReviewDate.php:40
