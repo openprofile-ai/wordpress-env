@@ -20,7 +20,7 @@ services:
             - openprofile_network
 
     wordpress:
-        image: wordpress:latest
+        image: wordpress:6.8-php8.3-apache
         volumes:
             - "./app:/var/www/html"
             - "../wordpress-fact-pod:/var/www/html/wp-content/plugins/wordpress-fact-pod"
