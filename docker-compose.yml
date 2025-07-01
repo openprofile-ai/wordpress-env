@@ -1,29 +1,11 @@
 services:
-    server:
-        image: webdevops/php-apache-dev:8.2
-        platform: linux/x86_64
-        environment:
-            WEB_DOCUMENT_ROOT: "${WEB_DOCUMENT_ROOT:-/var/www/html}"
-        ports:
-            - "80:80"
-            - "443:443"
-        volumes:
-            - "./app:${WEB_DOCUMENT_ROOT:-/var/www/html}"
-            - ./docker/apache/ssl:/opt/docker/etc/httpd/ssl
-        depends_on:
-            - database
-            - wordpress
-        networks:
-            - openprofile_network
-        tty: true
-
     database:
         image: mysql:8.4
         platform: linux/x86_64
         command: '--mysql-native-password=ON --max_allowed_packet=32505856'
         volumes:
-            - database:/var/lib/mysql
-            - ./tmp:/docker-entrypoint-initdb.d
+            - "./.mysql-data:/var/lib/mysql"
+            - "./db:/docker-entrypoint-initdb.d"
         restart: always
         environment:
             - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
@@ -37,25 +19,13 @@ services:
         networks:
             - openprofile_network
 
-    phpmyadmin:
-        image: phpmyadmin/phpmyadmin:latest
-        platform: linux/x86_64
-        restart: always
-        environment:
-            PMA_HOST: ${WORDPRESS_DB_HOST}
-            PMA_USER: ${WORDPRESS_DB_USER}
-            PMA_PASSWORD: ${WORDPRESS_DB_PASSWORD}
-        ports:
-            - "8080:80"
-        networks:
-            - openprofile_network
-
     wordpress:
         image: wordpress:latest
         volumes:
             - "./app:/var/www/html"
+            - "../wordpress-fact-pod:/var/www/html/wp-content/plugins/wordpress-fact-pod"
         ports:
-            - 8088:80
+            - 80:80
         restart: always
         environment:
             - WORDPRESS_DB_HOST=${WORDPRESS_DB_HOST}
@@ -65,21 +35,6 @@ services:
             - WORDPRESS_TABLE_PREFIX=${WORDPRESS_TABLE_PREFIX}
         networks:
             - openprofile_network
-
-    maildev:
-        image: djfarrelly/maildev:latest
-        platform: linux/amd64
-        environment:
-            MAILDEV_SMTP_PORT: 25
-        ports:
-            - "1080:80"
-        depends_on:
-            - server
-        networks:
-            - openprofile_network
-
-volumes:
-    database: {}
 
 networks:
     openprofile_network: {}

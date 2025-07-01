@@ -20,16 +20,16 @@
 
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', 'database_name_here' );
+define( 'DB_NAME', getenv('WORDPRESS_DB_NAME') ?: 'default_db_name' );
 
 /** Database username */
-define( 'DB_USER', 'username_here' );
+define( 'DB_USER', getenv('WORDPRESS_DB_USER') ?: 'default_user' );
 
 /** Database password */
-define( 'DB_PASSWORD', 'password_here' );
+define( 'DB_PASSWORD', getenv('WORDPRESS_DB_PASSWORD') ?: 'default_password' );
 
 /** Database hostname */
-define( 'DB_HOST', 'localhost' );
+define( 'DB_HOST', getenv('WORDPRESS_DB_HOST') ?: 'localhost' );
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
@@ -71,7 +71,7 @@ define( 'NONCE_SALT',       'put your unique phrase here' );
  *
  * @link https://developer.wordpress.org/advanced-administration/wordpress/wp-config/#table-prefix
  */
-$table_prefix = 'wp_';
+$table_prefix = getenv('WORDPRESS_TABLE_PREFIX') ?: 'wp_';
 
 /**
  * For developers: WordPress debugging mode.
