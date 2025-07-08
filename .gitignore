@@ -9,13 +9,4 @@ Thumbs.db
 .vscode/
 .idea/
 
-# ssl config files
-docker/apache/ssl/*
-!docker/apache/ssl/.gitkeep
-
-# tmp files
-tmp/*
-!tmp/.gitkeep
-
-#wp-config
-app/wp-config.php
+.mysql-data

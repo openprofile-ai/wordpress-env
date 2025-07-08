@@ -1,51 +1,59 @@
+
+---
+
 # Official OpenProfile.AI WordPress Fact Pod Plugin
 
-## WordPress & Apache configuration
+## WordPress & Apache Configuration
 
-### Requirements:
+### Requirements
 
-docker
+- [Docker](https://www.docker.com/)
 
-### Setup:
+### Setup
 
-Create and modify your own `.env` file:
+1. **Project Structure**
 
-```shell
-cp .env-sample .env
-```
+   Make sure your folders are organized as follows (both at the same directory level):
 
-Default host name is `docker.vm`.
-See [Docker image documentation](https://dockerfile.readthedocs.io/en/latest/content/DockerImages/dockerfiles/php-apache-dev.html).
+    ```
+    root/
+    ├── wordpress-env/
+    └── wordpress-fact-pod/
+    ```
 
-We need to add it to the `/etc/hosts` file: `127.0.0.1 docker.vm`.
+    - `wordpress-env/`: Contains your WordPress Docker environment (including `docker-compose.yml`).
+    - `wordpress-fact-pod/`: Contains the plugin source code.
 
-Regenerate if you want your own SSL certificate files in `docker/apache/ssl` and uncomment the volume in `docker-compose.yml` file.
-The `mkcert` tool can be used for it.
-See [mkcert installation](https://github.com/FiloSottile/mkcert)
+2. **Create your own `.env` file:**
 
-Execute command if you'd like to use `mkcert`:
+    ```sh
+    cp .env.sample .env
+    ```
 
-```shell
-mkcert -cert-file docker/apache/ssl/server.pem -key-file docker/apache/ssl/server.key docker.vm localhost 127.0.0.1 ::1
-cp docker/apache/ssl/server.pem docker/apache/ssl/server.crt
-```
+3. **Set the Hostname**
 
-Make sure you have a database `.sql` backup file in `/tmp` folder
+    - The site will be available at: `http://docker.vm`
+    - Add the following line to your `/etc/hosts` file:
+      ```
+      127.0.0.1 docker.vm
+      ```
 
-If you don't have `wp-config.php` file, you can create if from sample file inside `app` folder:
+4. **Start and Stop Docker Containers**
 
-```shell
-cd app
-cp wp-config-sample.php wp-config.php
-```
+    ```sh
+    make up     # Start the containers
+    make down   # Stop the containers
+    ```
 
-Run docker:
+5. **Default Credentials**
 
-```shell
-docker compose up
-```
-Also there is Makefile with most popular commands.
+    - **Username:** `Vasyl`
+    - **Password:** `1111`
 
-Now you're able to reach you site via `https://docker.vm` or `http://docker.vm`.
+---
 
-Happy coding!
+Now you can access your site at [http://docker.vm](http://docker.vm).
+
+Happy coding! 🚀
+
+---
