@@ -88,7 +88,8 @@ $table_prefix = getenv('WORDPRESS_TABLE_PREFIX') ?: 'wp_';
 define( 'WP_DEBUG', true );
 
 /* Add any custom values between this line and the "stop editing" line. */
-
+define('WP_DEBUG_DISPLAY', false); // Hides errors from browser
+define('WP_DEBUG_LOG', true); // Logs errors to wp-content/debug.log
 
 
 /* That's all, stop editing! Happy publishing. */
