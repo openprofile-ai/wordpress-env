@@ -1,4 +1,3 @@
-Absolutely! Here’s your updated and refactored Markdown file, including the note about the plugin folder structure and the updated `docker-compose` volume configuration:
 
 ---
 
