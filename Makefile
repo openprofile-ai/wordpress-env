@@ -4,3 +4,6 @@ up:
 
 down:
 	docker compose down -v
+
+bash:
+	docker compose exec wordpress bash
